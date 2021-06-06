@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Effective-C-改善程序与设计的55个具体做法(13~17)(三) | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="三、资源管理所谓资源就是，一旦用了它，将来必须还给系统。C++中最常使用的资源就是动态分配内存，其他常见的资源还包括文件描述器(file descriptors)，互斥锁，图形界面中的字型和笔刷，数据库连接，以及网络sockets,不论哪一种资源，当不再使用它时，必须将它归还给系统。 13. 以对象管理资源假设我们使用一个用来模拟投资行为（例如股票，债券等等）的程序库，其中各式各样的投资类型继承自">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective-C-改善程序与设计的55个具体做法(13~17)(三)">
+<meta property="og:url" content="http://yoursite.com/2019/12/17/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95-%E4%B8%89-13-17/index.html">
+<meta property="og:site_name" content="Home">
+<meta property="og:description" content="三、资源管理所谓资源就是，一旦用了它，将来必须还给系统。C++中最常使用的资源就是动态分配内存，其他常见的资源还包括文件描述器(file descriptors)，互斥锁，图形界面中的字型和笔刷，数据库连接，以及网络sockets,不论哪一种资源，当不再使用它时，必须将它归还给系统。 13. 以对象管理资源假设我们使用一个用来模拟投资行为（例如股票，债券等等）的程序库，其中各式各样的投资类型继承自">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-17T12:42:11.000Z">
+<meta property="article:modified_time" content="2021-06-06T09:03:18.948Z">
+<meta property="article:author" content="可乐">
+<meta property="article:tag" content="Effective C++">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Home" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Home</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Effective-C-改善程序与设计的55个具体做法-三-13-17" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/17/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95-%E4%B8%89-13-17/" class="article-date">
+  <time datetime="2019-12-17T12:42:11.000Z" itemprop="datePublished">2019-12-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Effective-C-改善程序与设计的55个具体做法(13~17)(三)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="三、资源管理"><a href="#三、资源管理" class="headerlink" title="三、资源管理"></a>三、资源管理</h4><p>所谓资源就是，一旦用了它，将来必须还给系统。C++中最常使用的资源就是动态分配内存，其他常见的资源还包括文件描述器(file descriptors)，互斥锁，图形界面中的字型和笔刷，数据库连接，以及网络sockets,不论哪一种资源，当不再使用它时，必须将它归还给系统。</p>
+<h5 id="13-以对象管理资源"><a href="#13-以对象管理资源" class="headerlink" title="13. 以对象管理资源"></a>13. 以对象管理资源</h5><p>假设我们使用一个用来模拟投资行为（例如股票，债券等等）的程序库，其中各式各样的投资类型继承自一个root clas Investment;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Investment</span> &#123;</span> ... &#125;; <span class="comment">// &quot;投资类型&quot;继承体系中的root class</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过工厂函数供应我们某特定的Investment对象</span></span><br><span class="line"><span class="function">Investment* <span class="title">createInvestment</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Investment* pInv = <span class="built_in">createInvestment</span>(); <span class="comment">// 调用factory函数</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">delete</span> pInv;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>“…”区域可能会含有return语句，这样就不会执行delete动作。</p>
+<p>为确保createInvestment返回的资源总是被释放，我们需要将资源放进对象内，当控制流离开f，该队象的析构函数会自动释放那些资源。</p>
+<p>许多资源被动态分配于heap内而后被用于单一区块或函数内。它们应该在控制流离开那个区块或函数时被释放。标准程序库提供的auto-ptr正是针对这种形势而设计的特制的产品。auto-ptr是个类指针对象，也就是所谓的智能指针。下面是如何使用：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">std::auto_ptr&lt;Investment&gt; <span class="title">pInv</span><span class="params">(createInvestment())</span></span>;</span><br><span class="line">    ... <span class="comment">// 就像以前使用pInv，不必delete，经由auto_ptr的析构函数自动删除pInv</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述简单的例子示范”以对象管理资源“两个关键想法:</p>
+<ul>
+<li>获得资源后立刻放进管理对象内</li>
+<li>管理对象利用析构函数确保资源被释放</li>
+</ul>
+<p>为了防止多个auto_ptr同时指向同一对象，auto_ptr有一个不寻常的性质：<strong>若通过copy构造函数或copy assignment操作符复制他们，它们会变成null，而复制所得的指针将取得资源的唯一使用权。</strong></p>
+<p>这一诡异的复制行为，意味着auto_ptr并非管理动态资源的好方法，例如：STL容器要求其元素发挥”正常的“复制行为，因此这些容器容不得auto_ptr。</p>
+<p>auto_ptr的替代方案是”引用计数型智能指针“，它可以持续追踪共有多少对象指向某笔资源，并且在无人指向它时自动删除该资源。引用计数型智能指针无法打破环状引用（两个其实已经没被使用的对象彼此互指，因而好像还处在”被使用“状态）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    std::<span class="function">tr1::shared_ptr&lt;Investment&gt; <span class="title">pInv</span><span class="params">(createInvestment())</span></span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    std::<span class="function">tr1::shared_ptr&lt;Investment&gt; <span class="title">pInv1</span><span class="params">(createInvestment())</span></span>;</span><br><span class="line">    std::<span class="function">tr1::shared_ptr&lt;Investment&gt; <span class="title">pInv2</span><span class="params">(pInv1)</span></span>;</span><br><span class="line">    pInv1 = pInv2;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>auto_ptr和tr1::shared_ptr两者都在其析构函数内做delete而不是delete[]动作。意味着不能用在动态分配而得的array身上。</p>
+<h5 id="14-在资源管理中小心copy行为"><a href="#14-在资源管理中小心copy行为" class="headerlink" title="14. 在资源管理中小心copy行为"></a>14. 在资源管理中小心copy行为</h5><p>自己建立资源管理类，假设我们使用C API函数处理类型为Mutex的互斥器对象共有lock和unlock两个函数可以使用：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">(Mutex* pm)</span></span>; <span class="comment">// 锁定pm所指的互斥器</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">(Mutex* pm)</span> <span class="comment">// 将互斥器解除锁定</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">class Lock </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Lock</span><span class="params">(Mutex* pm)</span></span></span><br><span class="line"><span class="function">    : mutexPtr(pm)</span></span><br><span class="line"><span class="function">    &#123;</span></span><br><span class="line">        <span class="built_in">lock</span>(mutexPtr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">Lock</span>() &#123;</span><br><span class="line">        <span class="built_in">unlock</span>(mutexPtr);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Mutex* mutexPtr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Mutex m; <span class="comment">// 定义所需的互斥器</span></span><br><span class="line">...</span><br><span class="line">&#123; <span class="comment">// 建立一个区块用来定义critical section</span></span><br><span class="line">    <span class="function">Lock <span class="title">m1</span><span class="params">(&amp;m)</span></span>; <span class="comment">// 锁定互斥器</span></span><br><span class="line">    ... <span class="comment">// 执行critial section内的操作</span></span><br><span class="line">&#125; <span class="comment">// 在区块最末尾，自动解除互斥器锁定</span></span><br></pre></td></tr></table></figure>
+
+<p>如果某个Lock对象被复制，会发生什么？</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Lock <span class="title">m11</span><span class="params">(&amp;m)</span></span>; <span class="comment">// 锁定m</span></span><br><span class="line"><span class="function">Lock <span class="title">m12</span><span class="params">(m11)</span></span>; <span class="comment">// 将m11复制到m12</span></span><br></pre></td></tr></table></figure>
+
+<p>大多数情况会选择以下两种可能：</p>
+<ul>
+<li>禁止复制</li>
+</ul>
+<p>许多时候允许RAII对象被复制不合理。如果复制动作对RAII class不合理，便应该禁止复制，见条款6</p>
+<ul>
+<li>对底层资源祭出”引用计数法“</li>
+</ul>
+<p>有时候我们希望保有资源，直到它的最后一个使用者（某对象）被销毁。这种情况下复制RAII 对象时，应该将资源的”被引用数“递增。tr1::shared_ptr便是如此.</p>
+<p>通常只要内含一个tr1::shared_ptr成员变量，RAII classes便可实现reference-counting copying行为。如果前述的Lock打算使用引用计数，它可以改变mutexPtr的类型，将它从Mutex*改为tr1::shared_ptr&lt;Mutex&gt;。然而很不幸tr1::shared_ptr的缺省行为是“当引用次数为0时删除其所指物”，那不是我们所要的行为。当我们用上一个Mutex，我们想要做的释放动作是解除锁定而非删除。</p>
+<p>幸运的是tr1::shared_ptr允许指定所谓的“删除器”，那是一个函数或函数对象，当引用次数为0时便被调用（此机能并不存在于auto_ptr-他总是将其指针删除）。删除器对tr1::shared_ptr构造函数而言是可有可无的第二参数，所以代码看起来像这样：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lock</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Lock</span><span class="params">(Mutex* pm)</span> <span class="comment">// 以某个Mutex初始化shared_ptr</span></span></span><br><span class="line"><span class="function">    : mutexPtr(pm, unlock) // 并以unlock函数为删除器</span></span><br><span class="line"><span class="function">    &#123;</span></span><br><span class="line">        <span class="built_in">lock</span>(mutexPtr.<span class="built_in">get</span>()); <span class="comment">// 条款15谈到“get&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::tr1::shared_ptr&lt;Mutex&gt; mutexPtr; <span class="comment">// 使用shared_ptr替换raw pointer</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>本例的Lock class不再声明析构函数。因为没有必要。条款5说过class析构函数（无论是编译器生成的，或用户自定的）会自动调用其non-static成员变量（本例为mutexPtr)的析构函数。而mutexPtr的析构函数会在互斥器的引用次数为0时自动调用删除器（unlock）。</p>
+<ul>
+<li>复制底部资源</li>
+</ul>
+<p>对一份资源可以拥有任意数量的复件。而需要”资源管理类”的唯一理由是，当你不再需要某个复件时确保它被释放。在此情况下复制资源管理对象，应该同时也复制其所包裹的资源（深度拷贝）。</p>
+<ul>
+<li>转移底部资源的拥有权</li>
+</ul>
+<p>极少数的情况下可能希望确保永远只有一个RAII对象指向一个未加工资源（raw resource），即使RAII对象被复制依然如此。此时资源的拥有权会从被复制物转移到目标物。如条款13所述（auto_ptr)。</p>
+<blockquote>
+<ul>
+<li>复制RAII对象必须一并复制它所管理的资源，所以资源的copying行为决定RAII对象的copying行为。</li>
+<li>普遍而常见的RAII class copy行为是：抑制copying，实行引用计数法。不过其他行为也有可能被实现。</li>
+</ul>
+</blockquote>
+<h5 id="15-在资源管理类中提供对原始资源的访问"><a href="#15-在资源管理类中提供对原始资源的访问" class="headerlink" title="15. 在资源管理类中提供对原始资源的访问"></a>15. 在资源管理类中提供对原始资源的访问</h5><p>完美的情况是依赖资源管理类来处理所有和资源之间的互动，而不是直接处理原始资源，但是很多接口都是直接处理原始资源，所以需要提供对原始资源的访问。</p>
+<p>有两个方法可以达成目标：显示转换和隐式转换。</p>
+<p>tr1::shared_ptr和auto_ptr都提供一个get成员函数，用来执行显式转换，也就是它会返回智能指针内部的原始指针（的复件）。</p>
+<p>就像（几乎）所有智能指针一样，tr1::shared_ptr和auto_ptr也重载了指针取值操作符（operator-&gt;和operator*)，它们允许隐式转换至底部原始指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Investment</span> &#123;</span> <span class="comment">// investment继承体系的根类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isTaxFree</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">Investment* <span class="title">createInvestment</span><span class="params">()</span></span>; <span class="comment">// factory函数</span></span><br><span class="line">std::<span class="function">tr1::shared_ptr&lt;Investment&gt; <span class="title">pil</span><span class="params">(createInvestment())</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> taxable1 = !(pil-&gt;<span class="built_in">isTaxFree</span>()); <span class="comment">// 经由operator-&gt;访问资源</span></span><br><span class="line">...</span><br><span class="line"><span class="function">std::auto_ptr&lt;Investment&gt; <span class="title">pi2</span><span class="params">(createInvestment())</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> taxable2 = !((*pi2).<span class="built_in">isTaxFree</span>()); <span class="comment">// 经由operator*访问资源</span></span><br></pre></td></tr></table></figure>
+
+<p>由于有时候还是必须取得RAII对象内的原始资源，某些RAII class 设计者提供一个隐式转换函数。考虑下面这个用于字体的RAII class：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">FontHandle <span class="title">getFont</span><span class="params">()</span></span>; <span class="comment">// C API</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">releaseFont</span><span class="params">(FontHandle fh)</span></span>; <span class="comment">// 来自同一组C API</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Font</span> &#123;</span> <span class="comment">// RAII class</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Font</span><span class="params">(FontHandle fh)</span> <span class="comment">// 获得资源</span></span></span><br><span class="line"><span class="function">    : f(fh)</span></span><br><span class="line"><span class="function">    &#123;</span> &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">Font</span>() &#123; <span class="built_in">releaseFont</span>(f); &#125; <span class="comment">// 释放资源</span></span><br><span class="line">    <span class="function">FontHandle <span class="title">get</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> f; &#125; <span class="comment">// 显示转换函数</span></span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">FontHandle</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> f; &#125; <span class="comment">// 隐式转换函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    FontHandle f; <span class="comment">// 原始（raw)字体资源</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>APIs往往要求访问原始资源，所以每一个RAII class应该提供一个“取得其所管理的资源”的方法。</li>
+<li>对原始资源的访问可能经由显式转换或隐式转换。一般而言显式转换比较安全，但隐式转换对用户比较方便。</li>
+</ul>
+</blockquote>
+<h5 id="16-成对使用new-和delete时要采取相同的形式"><a href="#16-成对使用new-和delete时要采取相同的形式" class="headerlink" title="16. 成对使用new 和delete时要采取相同的形式"></a>16. 成对使用new 和delete时要采取相同的形式</h5><p>数组的delete需要使用delete[]。因为单一对象的内存布局一般而言不同于数组的内存布局。更明确的说，数组所用的内存通常还包括“数组大小”的记录，以便delete知道需要调用多少次析构函数。单一对象的内存则没有这笔记录。</p>
+<p>这个规则对于喜欢用typedef的人也很重要，因为它意味着typedef的作者必须说清楚，当程序员以new创建该种类型对象时，该以哪一种delete形式删除之。考虑下面这个typedef：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> std::string AddressLines[<span class="number">4</span>] <span class="comment">//每个人的地址有4行，每行是一个string</span></span><br><span class="line">std::string pa1 = <span class="keyword">new</span> AddressLines; <span class="comment">// 注意，“new AddressLines&quot;返回一个string*</span></span><br><span class="line"><span class="comment">// 就像new string[4]一样</span></span><br><span class="line"><span class="comment">// 就必须匹配”数组形式“的delete：</span></span><br><span class="line"><span class="keyword">delete</span> pa1; <span class="comment">// 错误</span></span><br><span class="line"><span class="keyword">delete</span>[] pa1 <span class="comment">// 正确</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>如果在new表达式中使用[], 必须在相应的delete表达式中也使用[]。如果在new表达式中不使用[],一定不要在相应的delete表达式中使用[]。</li>
+</ul>
+</blockquote>
+<h5 id="17-以独立语句将newed对象置入智能指针"><a href="#17-以独立语句将newed对象置入智能指针" class="headerlink" title="17. 以独立语句将newed对象置入智能指针"></a>17. 以独立语句将newed对象置入智能指针</h5><p>假设我们有个函数用来揭示处理程序的优先权，另一个函数用来在某动态分配所得的Widget上进行某些带有优先权的处理：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">priority</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processWidget</span><span class="params">(std::tr1::shared_ptr&lt;Widget&gt; pw, <span class="keyword">int</span> priority)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line"><span class="built_in">processWidget</span>(std::tr1::shared_ptr&lt;Widget&gt;(<span class="keyword">new</span> Widget), <span class="built_in">priority</span>());</span><br></pre></td></tr></table></figure>
+
+<p>在调用processWidget之前，编译器必须创建代码，做以下三件事：</p>
+<ul>
+<li>调用priority</li>
+<li>执行”new Widget”</li>
+<li>调用tr1::shared_ptr构造函数</li>
+</ul>
+<p>C++编译器以什么顺序来完成这些事情？首先可以确定“new Widget”一定执行于tr1::shared_ptr构造函数之前，但是对priority的调用则可以排在第一或第二或第三执行。如果编译器选择以第二的顺序执行它，一旦priority的调用导致异常，在此情况下”new Widget“返回的指针将会遗失，因为它尚未被置入tr1::shared_ptr内。因为在”资源被创建“和”资源被转换为资源管理对象“两个时间点之间有可能发生异常干扰，从而导致内存泄漏。</p>
+<p>避免这类问题的方法：使用分离语句，分别写出（1）创建Widget. (2) 将它置入一个智能指针内，然后再把那个智能指针传给processWidget:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::<span class="function">tr1::shared_ptr&lt;Widget&gt; <span class="title">pw</span><span class="params">(<span class="keyword">new</span> Widget)</span> <span class="comment">// 在单独语句内以智能指针存储newed所得对象</span></span></span><br><span class="line"><span class="function"><span class="title">processWidget</span><span class="params">(pw, priority())</span></span>; <span class="comment">// 这个动作不会造成内存泄漏</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>以独立语句将newed对象存储于(置入)智能指针内。如果不这样做，一旦异常被抛出，有可能导致难以察觉的内存泄漏</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/17/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95-%E4%B8%89-13-17/" data-id="ckpkyp27w0003hd3a3fk8eg4i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Effective-C/" rel="tag">Effective C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/17/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95-%E5%9B%9B-18-25/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Effective-C-改善程序与设计的55个具体做法(四)(18~25)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/05/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95-%E4%BA%8C(5~12)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Effective C++改善程序与设计的55个具体做法(5~12)(二)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-System/">Computer System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-System/" rel="tag">Computer System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Effective-C/" rel="tag">Effective C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">开发环境搭建</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Computer-System/" style="font-size: 10px;">Computer System</a> <a href="/tags/Effective-C/" style="font-size: 20px;">Effective C++</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 15px;">开发环境搭建</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/26/computer-system-%E4%B8%80/">computer system(一)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/28/%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86%E7%82%B9/">零散知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/07/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95_all/">Effective-C-改善程序与设计的55个具体做法(All)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/05/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95%E4%BA%94-26-31/">Effective-C-改善程序与设计的55个具体做法(五)(26~31)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/17/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95-%E5%9B%9B-18-25/">Effective-C-改善程序与设计的55个具体做法(四)(18~25)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 可乐<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

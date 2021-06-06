@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>computer system(一) | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="计算机系统漫游系统的硬件组成1. 总线贯穿整个系统的是一组电子管道，称作总线，它携带字节并负责在各个部件间传递。通常总线被设计成传送定长的字节块（Word），字长是一个基本的系统参数，各个系统中都不尽相同。现在大多数的机器字长要么是4字节,要么是8字节。 2. I&#x2F;O设备I&#x2F;O设备是系统与外部世界的联系通道（键盘、鼠标、显示器、磁盘等）。每个I&#x2F;O设备都通过一个控制器或适配器与I&#x2F;O总线相连。控制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="computer system(一)">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/computer-system-%E4%B8%80/index.html">
+<meta property="og:site_name" content="Home">
+<meta property="og:description" content="计算机系统漫游系统的硬件组成1. 总线贯穿整个系统的是一组电子管道，称作总线，它携带字节并负责在各个部件间传递。通常总线被设计成传送定长的字节块（Word），字长是一个基本的系统参数，各个系统中都不尽相同。现在大多数的机器字长要么是4字节,要么是8字节。 2. I&#x2F;O设备I&#x2F;O设备是系统与外部世界的联系通道（键盘、鼠标、显示器、磁盘等）。每个I&#x2F;O设备都通过一个控制器或适配器与I&#x2F;O总线相连。控制">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-25T17:10:24.000Z">
+<meta property="article:modified_time" content="2021-06-06T09:03:18.950Z">
+<meta property="article:author" content="可乐">
+<meta property="article:tag" content="Computer System">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Home" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Home</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-computer-system-一" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/computer-system-%E4%B8%80/" class="article-date">
+  <time datetime="2020-04-25T17:10:24.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Computer-System/">Computer System</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      computer system(一)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="计算机系统漫游"><a href="#计算机系统漫游" class="headerlink" title="计算机系统漫游"></a>计算机系统漫游</h2><h4 id="系统的硬件组成"><a href="#系统的硬件组成" class="headerlink" title="系统的硬件组成"></a>系统的硬件组成</h4><h5 id="1-总线"><a href="#1-总线" class="headerlink" title="1. 总线"></a>1. 总线</h5><p>贯穿整个系统的是一组电子管道，称作总线，它携带字节并负责在各个部件间传递。通常总线被设计成传送定长的字节块（Word），字长是一个基本的系统参数，各个系统中都不尽相同。现在大多数的机器字长要么是4字节,要么是8字节。</p>
+<h5 id="2-I-O设备"><a href="#2-I-O设备" class="headerlink" title="2. I/O设备"></a>2. I/O设备</h5><p>I/O设备是系统与外部世界的联系通道（键盘、鼠标、显示器、磁盘等）。每个I/O设备都通过一个控制器或适配器与I/O总线相连。控制器与适配器的区别主要在于它们的封装方式。控制器是I/O设备本身或者系统的主印制电路板（通常称作主板）上的芯片组。而适配器则是一块插在主板插槽上的卡。</p>
+<h5 id="3-主存"><a href="#3-主存" class="headerlink" title="3. 主存"></a>3. 主存</h5><p>主存是一个临时存储设备。物理上来说，主存是由一组动态随机存取存储器（DRAM)芯片组成。从逻辑上来说，存储器是一个线性的字节数组，每个字节都有其唯一的地址（数组索引）</p>
+<h5 id="4-处理器"><a href="#4-处理器" class="headerlink" title="4. 处理器"></a>4. 处理器</h5><p>是解释（或执行）存储在主存中指令的引擎。处理器的核心是一个大小为一个字的存储设备（或寄存器），称为程序计数器。在任何时刻，程序计数器都指向主存中的某条机器语言指令（即含有该条指令的地址）。</p>
+<p>CPU在指令的要求下可能会执行以下操作：</p>
+<ul>
+<li><p>加载： 从主存复制一个字节或一个字到寄存器，以覆盖寄存器原来的内容</p>
+</li>
+<li><p>存储： 从寄存器复制一个字节或者一个字到主存的某个位置，以覆盖这个位置上原来的内容。</p>
+</li>
+<li><p>操作： 把两个寄存器的内容复制到算术/逻辑单元（ALU)，ALU对这两个字做算术运算，并将结果存放到一个寄存器中，以覆盖该寄存器中原来的内容。</p>
+</li>
+<li><p>跳转 从指令本身中抽取一个字，并将这个字复制到程序计数器中，以覆盖程序计数器中原来的值</p>
+</li>
+</ul>
+<h5 id="5-高速缓存至关重要"><a href="#5-高速缓存至关重要" class="headerlink" title="5. 高速缓存至关重要"></a>5. 高速缓存至关重要</h5><p>针对处理器与主存之间的差异，系统设计者采用了更小更快的存储设备，称为高速缓存存储器，作为暂时的集结区域，存放处理器近期可能会需要的信息。高速缓存使用的是一种叫做静态随机访问存储器（SRAM)的硬件技术实现的。系统可以获得一个很大的存储器，同时访问速度也很快，原因是利用了高速缓存的局部性原理，即程序具有访问局部区域里的数据和代码的趋势。通过让高速缓存里存放可能经常访问的数据，大部分的内存操作都能在快速的高速缓存中完成。</p>
+<h5 id="6-存储设备形成层次结构"><a href="#6-存储设备形成层次结构" class="headerlink" title="6. 存储设备形成层次结构"></a>6. 存储设备形成层次结构</h5><p>存储器层次结构的主要思想是上一层存储器作为低一层存储器的高速缓存。</p>
+<h4 id="操作系统管理硬件"><a href="#操作系统管理硬件" class="headerlink" title="操作系统管理硬件"></a>操作系统管理硬件</h4><p>当我们加载和运行程序时，程序都没有直接访问键盘、显示器、磁盘或者主存。取而代之的是他们依靠操作系统提供的服务。我们可以把操作系统看成是应用程序和硬件插入的一层软件。所有应用程序对硬件的操作尝试都必须通过操作系统。</p>
+<p>操作系统有两个基本功能：（1） 防止硬件被失控的应用程序滥用。（2）向应用程序提供简单一致的机制来控制复杂而又通常大不相同的低级硬件设备。操作系统通过几个基本的抽象概念（进程、虚拟内存和文件）来实现这两个功能。</p>
+<p>操作系统通过几个基本的抽象概念来实现这两个功能。文件是I/O设备的抽象表示，虚拟内存是对主存和磁盘I/O设备的抽象表示，进程则是对处理器、主存和I/O设备的抽象表示。</p>
+<h5 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h5><p>程序看上去是独占地使用处理器、主存和I/O设备。处理器看上去就像在不间断地一条一条地执行程序中的指令，即该程序的代码和数据是系统内存中唯一的对象。这些假象是通过进程来实现的。</p>
+<p>进程是操作系统对一个正在运行的程序的一种抽象。无论是在单核还是多核系统中，一个CPU看上去都像是在并发地执行多个进程，这是通过处理器在进程间切换来实现的。操作系统实现这种交错执行的机制称为上下文切换。</p>
+<p>操作系统保持跟踪进程运行所需的所有状态信息。这种状态，也就是上下文，包括许多信息，比如PC和寄存器文件的当前值，以及主存的内容。</p>
+<p>从一个进程到另一个进程之间的转换，是操作系统内核管理的，内核是操作系统代码常驻主存的部分。当应用程序需要操作系统的某些操作时，比如读写文件，它就执行一条特殊的系统调用指令，将控制权传递给内核。然后内核执行被请求的操作并返回应用程序。</p>
+<h5 id="2-线程"><a href="#2-线程" class="headerlink" title="2. 线程"></a>2. 线程</h5><p>一个进程实际上可以由多个称为线程的执行单元组成，每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。多线程之间比多进程之间更容易共享数据，线程一般来说都比进程更高效。</p>
+<h5 id="3-虚拟内存"><a href="#3-虚拟内存" class="headerlink" title="3. 虚拟内存"></a>3. 虚拟内存</h5><p>虚拟内存是一个抽象，它为每个进程提供了一个假象，即每个进程都在独占地使用主存。每个进程看到的内存都是一致的，称为虚拟地址空间。</p>
+<p>每个进程看到的虚拟地址空间由大量准确定义的区构成，每个区都有专门的功能。</p>
+<ul>
+<li>程序代码和数据</li>
+</ul>
+<p>对所有进程来说，代码是从同一固定地址开始，紧接着的是和C全局变量相对应的数据位置。代码和数据区在进程一开始运行时就被指定了大小。</p>
+<ul>
+<li>堆</li>
+</ul>
+<p>代码和数据区后紧随着是运行时堆。堆可在进程运行时动态地扩展和收缩。</p>
+<ul>
+<li>共享库</li>
+</ul>
+<p>大约在地址空间的中间部分是一块用来存放像C标准库和数学库这样的共享库的代码和数据的区域。</p>
+<ul>
+<li>栈</li>
+</ul>
+<p>位于用户虚拟地址空间顶部的是用户栈，编译器用它来实现函数调用。和堆一样，可以在程序执行期间动态扩展和收缩</p>
+<ul>
+<li>内核虚拟内存</li>
+</ul>
+<p>地址空间顶部的区域是为内核保留的。不允许应用程序读写这个区域的内容或直接调用内核代码定义的函数。它们必须调用内核来执行这些操作</p>
+<blockquote>
+<p>虚拟内存运作的基本思想是：把一个进程虚拟内存的内容存储在磁盘上，然后用主存作为磁盘的高速缓存。</p>
+</blockquote>
+<h5 id="4-文件"><a href="#4-文件" class="headerlink" title="4. 文件"></a>4. 文件</h5><p>文件就是字节序列，仅此而已。每个I/O设备，包括磁盘、键盘、显示器，甚至是网络都可以看成是文件。系统中的所有输入输出都是通过使用一小组称为Unix I/O的系统函数调用读写文件来实现的。它向应用程序提供了一个统一的视图，来看待系统中可能含有的所有各式各样的I/O设备。</p>
+<h4 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h4><h5 id="1-线程级并发"><a href="#1-线程级并发" class="headerlink" title="1. 线程级并发"></a>1. 线程级并发</h5><p>传统意义上，并发执行只是模拟出来的。是通过使计算机在它正在执行的进程间快速切换来实现的。</p>
+<p>超线程，有时称为同时多线程，是一项允许一个CPU执行多个控制流的技术。它涉及CPU某些硬件有多个备份，比如程序计数器和寄存器文件，而其他的硬件部分只有一份。</p>
+<p>常规的处理器需要大约20000个时钟周期做不同线程间的转换，而超线程的处理器可以在单个周期的基础上决定要执行哪一个线程。这使得CPU能够更好地利用它的处理资源。比如，假设一个线程必须等到某些数据被装载到高速缓存中，那CPU就可以继续去执行另一个线程。</p>
+<p>多处理器可以从两个方面来提高系统性能。首先，它减少了在执行多个任务时模拟并发的需要。其次，它可以使应用程序运行得更快，当然这必须要求程序是以多线程方式来书写的，这些线程可以并行地高效执行。</p>
+<h5 id="2-指令级并行"><a href="#2-指令级并行" class="headerlink" title="2. 指令级并行"></a>2. 指令级并行</h5><p>在较低的抽象层次上，现代处理器可以同时执行多条指令的属性称为指令级并行。早期的微处理器，需要多个（通常是3<del>10个）时钟周期来执行一条指令。最近的处理器可以保持每个时钟周期2</del>4条指令的执行效率。其实每条指令从开始到结束需要长得多的时间，大约20个或更多周期。</p>
+<p>如果处理器可以达到比一个周期一条指令更快的执行速率，就称之为超标量处理器。</p>
+<h5 id="3-单指令、多数据并行"><a href="#3-单指令、多数据并行" class="headerlink" title="3. 单指令、多数据并行"></a>3. 单指令、多数据并行</h5><p>在最低层次上，许多现代处理器拥有特殊的硬件，允许一条指令产生多个可以并行执行的操作，这种方式称为单指令、多数据并行。即SIMD并行。</p>
+<p>提供这些SIMD指令多是为了提高处理影像、声音和视频数据应用的执行速度。虽然有些编译器会试图从C程序中自动抽取SIMD并行性，但是更可靠的方法是用编译器支持的特殊的向量数据类型来写程序。</p>
+<h2 id="程序结构和执行"><a href="#程序结构和执行" class="headerlink" title="程序结构和执行"></a>程序结构和执行</h2><h3 id="信息的表示和处理"><a href="#信息的表示和处理" class="headerlink" title="信息的表示和处理"></a>信息的表示和处理</h3><p>无符号编码基于传统的二进制表示法，表示大于或等于零的数字。补码编码是表示有符号整数的最常见的方式。浮点数编码是表示实数的科学技术法以2为基数的版本。</p>
+<p>浮点运算是不可结合的。例如，在大多数机器上，C表达式（3.14 + 1e20) - 1e20求得的值会是0，而3.14 + (1e20 - 1e20)求得的值会是3.14.</p>
+<h4 id="1-信息的存储"><a href="#1-信息的存储" class="headerlink" title="1. 信息的存储"></a>1. 信息的存储</h4><p>大多数计算机使用8位的块，或者字节，作为最小的可寻址的内存单位，而不是访问内存中单独的位。机器级程序将内存视为一个非常大的字节数组，称为虚拟内存，所有可能地址的集合就称为虚拟地址空间。</p>
+<h4 id="2-十六进制表示法"><a href="#2-十六进制表示法" class="headerlink" title="2. 十六进制表示法"></a>2. 十六进制表示法</h4><p>当x是2的非负整数n次幂时，也就是x=2<sup>n</sup>, 可以很容易的把它写成十六进制的形式，只要记住x的二进制表示就是1后面跟n个0，当n表示成i + 4j的形式，其中0 ≤ i ≤ 3，我们可以把x写成开头的十六进制数字为1（i = 0),2(i = 1), 4(i = 2), 8(i = 3),后面跟着j个十六进制的0。比如，x=2048=2<sup>11</sup>,n= 11= 3 +4*2，从而得到十六进制表示0x800.</p>
+<h4 id="2-字数据大小"><a href="#2-字数据大小" class="headerlink" title="2. 字数据大小"></a>2. 字数据大小</h4><p>每台计算机都有一个字长，指明指针数据的标称大小。虚拟地址是以这样的一个字来编码的，所以字长决定的最重要的系统参数就是虚拟地址空间的最大大小。</p>
+<p>大部分数据类型都编码为有符号数值，除非有前缀unsigned或对确定大小的数据类型使用了特定的无符号声明。数据类型char是一个例外。尽管大多数编译器和机器将他们视为有符号数，但C标准不保证这一点。</p>
+<h4 id="3-寻址和字节顺序"><a href="#3-寻址和字节顺序" class="headerlink" title="3. 寻址和字节顺序"></a>3. 寻址和字节顺序</h4><p>在几乎所有的机器上，多字节对象都被存储为连续的字节序列，对象的地址为所使用字节中最小的地址。</p>
+<ul>
+<li><p>大端法： 最高有效字节在最前面的方式</p>
+</li>
+<li><p>小端法： 最低有效字节在最前面的方式</p>
+</li>
+</ul>
+<p>需要注意大小端的几个场合：</p>
+<ul>
+<li><p>在不同类型的机器之间通过网络传送二进制数据时。</p>
+</li>
+<li><p>检查机器级程序时，阅读表示整数数据的字节序列时字节顺序。</p>
+</li>
+<li><p>当编写规避正常的类型系统的程序时。在C语言中可以通过强制类型转换（cast)或联合（union)来允许以一种数据类型引用一个对象，而这种数据类型与创建这个对象时定义的数据类型不同。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看机器大小端代码</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *byte_pointer;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_bytes</span><span class="params">(byte_pointer start, <span class="keyword">size_t</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; %.2x&quot;</span>, start[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_int</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    show_bytes((byte_pointer)&amp;x, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_float</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123;</span><br><span class="line">    show_bytes((byte_pointer)&amp;x, <span class="keyword">sizeof</span>(<span class="keyword">float</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_pointer</span><span class="params">(<span class="keyword">void</span> *x)</span> </span>&#123;</span><br><span class="line">    show_bytes((byte_pointer)&amp;x, <span class="keyword">sizeof</span>(<span class="keyword">void</span> *));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test_show_bytes</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ival = val;</span><br><span class="line">    <span class="keyword">float</span> fval = (<span class="keyword">float</span>)ival;</span><br><span class="line">    <span class="keyword">int</span> *pVal = &amp;ival;</span><br><span class="line">    show_int(ival);</span><br><span class="line">    show_float(fval);</span><br><span class="line">    show_pointer(pVal);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ival = <span class="number">12345</span>;</span><br><span class="line">    <span class="comment">// show_int(ival);</span></span><br><span class="line">    test_show_bytes(ival);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上述代码int和float在不同机器或操作系统结果是相同的，只是字节顺序不同。但是指针却是完全不同的。不同机器/操作系统配置使用不同的存储分配规则。</p>
+</blockquote>
+<h4 id="4-表示字符串"><a href="#4-表示字符串" class="headerlink" title="4. 表示字符串"></a>4. 表示字符串</h4><p>文本数据比二进制数据具有更强的平台独立性。java编程语言使用Unicode来表示字符串。</p>
+<h4 id="5-布尔代数简介"><a href="#5-布尔代数简介" class="headerlink" title="5. 布尔代数简介"></a>5. 布尔代数简介</h4><p>位向量就是固定长度为w，由0和1组成的串。</p>
+<p>位向量有一个很有用的应用就是表示有限集合。我们可以用位向量[a<sub>w-1</sub>, …, a<sub>1</sub>, a<sub>0</sub>]来表示集合。例如位向量a = [01101001] 表示集合A= {0, 3, 5, 6},而b = [01010101]表示集合B = {0, 2, 4, 6},使用这种编码集合的方法，布尔运算|和&amp;分别对应于集合的并和交，而~对应于集合的补。运算a&amp;b = [01000001], 而A 交 B = {0, 6}.</p>
+<h4 id="6-C语言中的移位运算"><a href="#6-C语言中的移位运算" class="headerlink" title="6. C语言中的移位运算"></a>6. C语言中的移位运算</h4><p>机器支持两种形式的右移：逻辑右移和算术右移。逻辑右移在左端补0，算术右移在左端补k个最高有效位的值。</p>
+<blockquote>
+<p>C语言标准没有明确定义对于有符号数应该使用哪种类型的右移。但是实际上几乎所有的编译器/机器组合都对有符号数使用算术右移，对于无符号数使用逻辑右移。</p>
+</blockquote>
+<p>与C相比，java对于如何进行右移有明确的定义。表达式x&gt;&gt;k会将x算术右移k个位置，而x&gt;&gt;&gt;k会对x做逻辑右移。</p>
+<p>当移动k位，这里k很大时，对于一个由w位组成的数据类型，如果要移动k≥w位会得到什么结果呢？例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> lval = <span class="number">0xFEDCBA98</span> &lt;&lt; <span class="number">32</span>;</span><br><span class="line"><span class="keyword">int</span> aval = <span class="number">0xFEDCBA98</span> &gt;&gt; <span class="number">36</span>;</span><br><span class="line"><span class="keyword">unsigned</span> uval = <span class="number">0xFEDCBA98</span>u &gt;&gt; <span class="number">40</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在许多机器上，当移动一个w位的值时，移位指令只考虑位移量的低log<sub>2</sub>w位。因此实际上位移量就是通过计算k mod w得到的。例如当w = 32时，上面三个移位运算分别是移动0，4，8位。不过这种行为对于C程序来说是没有保证的，所以应该保持位移量小于待移位值的位数。另一方面，java特别要求位移数量应该按照我们前面所讲的求模的方法来计算。</p>
+<h4 id="7-整型数据类型"><a href="#7-整型数据类型" class="headerlink" title="7. 整型数据类型"></a>7. 整型数据类型</h4><p>C和C++都支持有符号（默认）和无符号数。Java只支持有符号数</p>
+<blockquote>
+<p>C语言标准并没有要求要用补码形式来表示有符号整数，但是几乎所有的机器都是这么做的。</p>
+</blockquote>
+<h4 id="6-有符号数和无符号数之间的转换"><a href="#6-有符号数和无符号数之间的转换" class="headerlink" title="6. 有符号数和无符号数之间的转换"></a>6. 有符号数和无符号数之间的转换</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> <span class="keyword">int</span> v = <span class="number">-12345</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> uv = (<span class="keyword">unsigned</span> <span class="keyword">short</span>)v;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;v = %d, uv = %u\n&quot;</span>, v, uv);</span><br><span class="line"><span class="comment">// 输出：v = -12345 uv = 53191</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>强制类型转换的结果保持位值不变，只是改变了解释这些位的方式。</p>
+</blockquote>
+<p>对于大多数C语言的实现，处理同样字长的有符号数和无符号数之间相互转换的一搬规则是：数值可能被改变，但是位模式不变。</p>
+<p>C语言中当声明一个像12345或者0x1A2B这样的常量时，这个值就被认为是有符号的。要创建一个无符号常量，必须加上后缀字符’U’或者‘u’.</p>
+<p>C语言允许无符号数和有符号数的转换，虽然C标准没有精确规定应如何进行这种转换，但大多数系统遵循的原则是底层的位表示保持不变。</p>
+<p>C语言中，当执行一个运算时，如果它的一个运算数是有符号的而另一个是无符号的，那么C语言会隐式地将有符号参数强制类型转换为无符号数，并假设这两个数都是非负的，来执行这个运算。这种方法对于标准的算术运算来说并无多大差异，但是对于像&lt;和&gt;这样的关系运算符来说，它会导致非直观的结果。</p>
+<h4 id="7-扩展一个数字的位表示"><a href="#7-扩展一个数字的位表示" class="headerlink" title="7. 扩展一个数字的位表示"></a>7. 扩展一个数字的位表示</h4><p>要将一个无符号数转换为一个更大的数据类型，我们只要简单地在表示的开头添加0.这种运算被称为0扩展。</p>
+<h3 id="程序的机器级表示"><a href="#程序的机器级表示" class="headerlink" title="程序的机器级表示"></a>程序的机器级表示</h3><p>计算机执行机器代码，用字节序列编码低级的操作，包括处理数据、管理内存、读写存储设备上的数据，以及利用网络通信。</p>
+<h4 id="机器级代码"><a href="#机器级代码" class="headerlink" title="机器级代码"></a>机器级代码</h4><p>对于机器级编程来说，其中两种抽象尤为重要。一种是由指令集体系结构或指令集架构来定义机器级程序的格式和行为，它定义了处理器状态、指令的格式，以及每条指令对状态的影响。大多数指令集体系结构，将程序的行为描述成好像每条指令都是按顺序执行的，一条指令结束后，下一条再开始。处理器的硬件远比描述的精细复杂，它们并发地执行许多指令，但是可以采取措施保证整体行为与指令集体系结构指定的顺序行为的行为完全一致。第二种抽象是，机器级程序使用的内存地址是虚拟地址，提供的内存模型看上去是一个非常大的字节数组。</p>
+<ul>
+<li><p>程序计数器（通常称为“PC”， 在x86-64中用%rip表示）给出将要执行的下一条指令在内存中的地址</p>
+</li>
+<li><p>整数寄存器文件包含16个命名的位置，分别存储64位的值。这些寄存器可以存储地址（对应于C语言的指针）或整数数据。有的寄存器被用来记录某些重要的程序状态，而其他的寄存器用来保存临时数据，例如过程的参数和局部变量，以及函数的返回值。</p>
+</li>
+<li><p>条件码寄存器保存着最近执行的算术或逻辑指令的状态信息。它们用来实现控制或数据流中的条件变化，比如说用来实现if和while语句</p>
+</li>
+<li><p>一组向量寄存器可以存放一个或多个整数或浮点数值。</p>
+</li>
+</ul>
+<p>虽然C语言提供了一种模型，可以在内存中声明和分配各种数据类型的对象，但是机器代码只是简单地将内存看成一个很大的、按字节寻址的数组。C语言中的聚合数据类型，例如数组和结构，在机器代码中用一组连续的字节来表示。即使是对标量数据类型，汇编代码也不区分有符号或无符号整数，不区分各种类型的指针，甚至不区分指针和整数。</p>
+<p>程序内存包含：程序的可执行机器代码，操作系统需要的一些信息，用来管理过程调用和返回的运行时栈，以及用户分配的内存块。操作系统负责管理虚拟地址空间，将虚拟地址翻译成实际处理器内存中的物理地址。</p>
+<p>GCC编译器将C编译成汇编代码指令：</p>
+<blockquote>
+<p>gcc -Og -S xxx.c</p>
+</blockquote>
+<p>GCC编译器编译汇编代码：</p>
+<blockquote>
+<p>gcc -Og -c xx</p>
+</blockquote>
+<p>下查看机器代码文件的内容，反汇编器非常有用。Linux下使用：</p>
+<blockquote>
+<p>objdump -d mstore.o</p>
+</blockquote>
+<ul>
+<li>x86-64的指令长度从1到15个字节不等。常用的指令以及操作数较少的指令所需字节数少，而不太常用或操作数较多的指令所需的字节数较多</li>
+<li>设计指令的方式是，从某个指定位置开始，可以将字节唯一地解码成机器指令。</li>
+</ul>
+<p>生成实际可执行的代码需要对一组目标代码文件运行链接器，而这一组目标代码文件中必须含有一个main函数。</p>
+<h4 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h4><p>由于是从16位体系结构扩展成32位的，Intel用术语“字（word)”表示16位数据类型。因此，成32位数为“双字“，称64位数为”四字“。</p>
+<p>C语言基本类型对应的x86-64表示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">C声明</th>
+<th align="left">Intel数据类型</th>
+<th align="left">汇编代码后缀</th>
+<th align="left">大小（字节）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">char</td>
+<td align="left">字节</td>
+<td align="left">b</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">short</td>
+<td align="left">字</td>
+<td align="left">w</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">双字</td>
+<td align="left">l</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">long</td>
+<td align="left">四字</td>
+<td align="left">q</td>
+<td align="left">8</td>
+</tr>
+<tr>
+<td align="left">char*</td>
+<td align="left">四字</td>
+<td align="left">q</td>
+<td align="left">8</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">单精度</td>
+<td align="left">s</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">双精度</td>
+<td align="left">l</td>
+<td align="left">8</td>
+</tr>
+</tbody></table>
+<h4 id="访问信息"><a href="#访问信息" class="headerlink" title="访问信息"></a>访问信息</h4><p>一个x86-64的中央处理单元（CPU) 包含一组16个存储64位值的通用目的寄存器。这些寄存器用来存储整数数据和指针。</p>
+<p>对于生成小于8字节结果的指令，寄存器中剩下的字节会怎样，对此有两条规则：生成1字节和2字节数字的指令会保持剩下的字节不变；生成四字节数字的指令会把高四位4个字节置为0.</p>
+<h4 id="操作数指示符"><a href="#操作数指示符" class="headerlink" title="操作数指示符"></a>操作数指示符</h4><p>大多数指令有一个或多个操作数，指示出执行一个操作中要使用的源数据值，以及放置结果的目的位置。</p>
+<p>源数据值可以以常数形式给出，或是从寄存器或内存中读出。结果可以放在寄存器或内存中。因此各种不同的操作数的可能性被分为三种类型，第一种类型是立即数，用来表示常数值。在ATT格式的汇编代码中，立即数的书写方式是‘$’后面跟一个整数。第二种类型是寄存器，R[r<sub>a</sub>]来表示某个寄存器的值。第三类操作数是内存引用，它会根据计算出来的地址（通常称为有效地址）访问某个内存位置。我们用符号M<sub>b</sub>[Addr]表示对存储在内存中从地址Addr开始的b个字节值的引用。</p>
+<h4 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h4><h5 id="MOV类-把数据从源位置复制到目的位置"><a href="#MOV类-把数据从源位置复制到目的位置" class="headerlink" title="MOV类 把数据从源位置复制到目的位置"></a>MOV类 把数据从源位置复制到目的位置</h5><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">效果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">MOV S,D</td>
+<td align="left">D ← S</td>
+<td align="left">传送</td>
+</tr>
+<tr>
+<td align="left">movb</td>
+<td align="left"></td>
+<td align="left">传送字节</td>
+</tr>
+<tr>
+<td align="left">movw</td>
+<td align="left"></td>
+<td align="left">传送字</td>
+</tr>
+<tr>
+<td align="left">movl</td>
+<td align="left"></td>
+<td align="left">传送双字</td>
+</tr>
+<tr>
+<td align="left">movq</td>
+<td align="left"></td>
+<td align="left">传送四字</td>
+</tr>
+<tr>
+<td align="left">movabsq I,R</td>
+<td align="left">R ← I</td>
+<td align="left">传送绝对的四字</td>
+</tr>
+</tbody></table>
+<p>源操作数指定的值是一个立即数，存储在寄存器中或者内存中。目的操作数制定一个位置，要么是一个寄存器，要么是一个内存地址。x86-64加了一条限制，传送指令的两个操作数不能都指向内存位置。将一个值从一个内存位置复制到另一个内存位置需要两条指令——第一条指令将源值加载到寄存器中，第二条将该寄存器值写入目的位置。</p>
+<p>MOV指令只会更新目的操作数指定的那些寄存器字节或内存位置。唯一的例外是movl指令以寄存器作为目的时，它会把该寄存器的高位四字节设置为0.</p>
+<blockquote>
+<p>movabsq是处理64位立即数数据的，常规的movq指令只能以表示为32位补码数字的立即数作为源操作数，然后把这个值符号扩展得到64位的值，放到目的位置。movabsq指令能够以任意64位立即数值作为源操作数，并且只能以寄存器作为目的。</p>
+</blockquote>
+<p>下面两个表中是将较小的源值复制到较大的目的时使用。所有的这些指令都是把数据从源（在寄存器或内存中）复制到目的寄存器。</p>
+<table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">效果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">MOVZ S,R</td>
+<td align="left">R ← 零扩展(S)</td>
+<td align="left">以零扩展进行传送</td>
+</tr>
+<tr>
+<td align="left">movzbw</td>
+<td align="left"></td>
+<td align="left">将做了零扩展的字节传送到字</td>
+</tr>
+<tr>
+<td align="left">movzbl</td>
+<td align="left"></td>
+<td align="left">将做了零扩展的字节传送到双字</td>
+</tr>
+<tr>
+<td align="left">movzwl</td>
+<td align="left"></td>
+<td align="left">将做了零扩展的字传送到双字</td>
+</tr>
+<tr>
+<td align="left">movzbq</td>
+<td align="left"></td>
+<td align="left">将做了零扩展的字节传送到四字</td>
+</tr>
+<tr>
+<td align="left">movzwq</td>
+<td align="left"></td>
+<td align="left">将做了零扩展的字传送到四字</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意上述表格内没有明确的指令把4字节源值零扩展到8字节目的，这样的指令逻辑上应该被命名为movzlq,但是并没有这样的指令。不过这样的传送可以用以寄存器为目的的movl指令来实现。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">效果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">MOVS S,R</td>
+<td align="left">R ← 符号扩展（S)</td>
+<td align="left">传送符号扩展的字节</td>
+</tr>
+<tr>
+<td align="left">movsbw</td>
+<td align="left"></td>
+<td align="left">将做了符号扩展的字节传送到字</td>
+</tr>
+<tr>
+<td align="left">movsbl</td>
+<td align="left"></td>
+<td align="left">将做了符号扩展的字节传送到双字</td>
+</tr>
+<tr>
+<td align="left">movswl</td>
+<td align="left"></td>
+<td align="left">将做了符号扩展的字传送到双字</td>
+</tr>
+<tr>
+<td align="left">movsbq</td>
+<td align="left"></td>
+<td align="left">将做了符号扩展的字节传送到四字</td>
+</tr>
+<tr>
+<td align="left">movswq</td>
+<td align="left"></td>
+<td align="left">将做了符号扩展的字传送到四字</td>
+</tr>
+<tr>
+<td align="left">movslq</td>
+<td align="left"></td>
+<td align="left">将做了符号扩展的双字传送到四字</td>
+</tr>
+<tr>
+<td align="left">cltq</td>
+<td align="left">%rax ← 符号扩展（%eax)</td>
+<td align="left">把%eax符号扩展到%rax</td>
+</tr>
+</tbody></table>
+<h4 id="数据传送示例"><a href="#数据传送示例" class="headerlink" title="数据传送示例"></a>数据传送示例</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">exchange</span><span class="params">(<span class="keyword">long</span> *xp, <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> x = *xp;</span><br><span class="line">    *xp = y;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// xp in %rdi, <span class="keyword">y</span> in %rsi</span><br><span class="line">exchange:</span><br><span class="line"> mov<span class="string">q (%rdi)</span>, %rax             获取xp值保存在%rax(返回值)</span><br><span class="line"> movq %rsi, (%rdi)             保存<span class="keyword">y</span>到xp指向的地址</span><br><span class="line"> ret                           返回（%rax内保存着返回值）</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>关于这段汇编代码有两点值得注意。首先，C语言中的指针其实就是地址。间接引用指针就是将该指针放在一个寄存器中，然后在内存引用中使用这个寄存器。其次，像x这样的局部变量通常是保存在寄存器中，而不是内存中。</p>
+</blockquote>
+<h4 id="压入和弹出栈数据"><a href="#压入和弹出栈数据" class="headerlink" title="压入和弹出栈数据"></a>压入和弹出栈数据</h4><p>栈遵循“后进先出”的原则，弹出的值永远是最近被压入而且仍然在栈中的值。在x86-64中，程序栈存放在内存中某个区域。栈向下增长，栈顶元素的地址时所有栈中元素地址中最低的。栈指针%rsp保存着栈顶元素的地址。</p>
+<table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">效果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pushq S</td>
+<td align="left">R[%rsp]←R[%rsp] -8; M[R[%rsp]] ← S</td>
+<td align="left">将四字节入栈</td>
+</tr>
+<tr>
+<td align="left">popq D</td>
+<td align="left">D ← M[R[%rsp]]; R[%rsp] ← R[%rsp] + 8</td>
+<td align="left">将四字节出栈</td>
+</tr>
+</tbody></table>
+<h3 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">效果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">leaq S,D</td>
+<td align="left">D ← &amp;S</td>
+<td align="left">加载有效地址</td>
+</tr>
+<tr>
+<td align="left">INC D</td>
+<td align="left">D ← D + 1</td>
+<td align="left">加1</td>
+</tr>
+<tr>
+<td align="left">DEC D</td>
+<td align="left">D ← D - 1</td>
+<td align="left">减1</td>
+</tr>
+<tr>
+<td align="left">NEG D</td>
+<td align="left">D ← -D</td>
+<td align="left">取负</td>
+</tr>
+<tr>
+<td align="left">NOT D</td>
+<td align="left">D ← ~D</td>
+<td align="left">取补</td>
+</tr>
+<tr>
+<td align="left">ADD S,D</td>
+<td align="left">D ← D + S</td>
+<td align="left">加</td>
+</tr>
+<tr>
+<td align="left">SUB S,D</td>
+<td align="left">D ← D - S</td>
+<td align="left">减</td>
+</tr>
+<tr>
+<td align="left">IMUL S,D</td>
+<td align="left">D ← D*S</td>
+<td align="left">乘</td>
+</tr>
+<tr>
+<td align="left">XOR S,D</td>
+<td align="left">D ← D ^ S</td>
+<td align="left">异或</td>
+</tr>
+<tr>
+<td align="left">OR S,D</td>
+<td align="left">D ← D | S</td>
+<td align="left">或</td>
+</tr>
+<tr>
+<td align="left">AND S,D</td>
+<td align="left">D ← D &amp; S</td>
+<td align="left">与</td>
+</tr>
+<tr>
+<td align="left">SAL k,D</td>
+<td align="left">D ← D &lt;&lt; k</td>
+<td align="left">左移</td>
+</tr>
+<tr>
+<td align="left">SHL k,D</td>
+<td align="left">D ← D &lt;&lt; k</td>
+<td align="left">左移(等同于SAL)</td>
+</tr>
+<tr>
+<td align="left">SAR k,D</td>
+<td align="left">D ← D &gt;&gt;<sub>A</sub>k</td>
+<td align="left">算术右移</td>
+</tr>
+<tr>
+<td align="left">SHR k,D</td>
+<td align="left">D ← D &gt;&gt;<sub>L</sub>k</td>
+<td align="left">逻辑右移</td>
+</tr>
+</tbody></table>
+<p>以上这些指令除了leaq外，其他都有各种不同大小操作数的变种。例如，指令类ADD由四条加法指令组成：addb addw addl addq</p>
+<h4 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h4><p>加载有效地址指令leaq实际上是movq指令的变形。它的指令形式是从内存读取数据到寄存器，但实际上它根本就没有引用内存。它的第一个操作数看上去是一个内存引用，但该指令并不是从指定的位置读入数据，而是将有效地址写入到目的操作数。目的操作数必须是一个寄存器。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">scale</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">long</span> y, <span class="keyword">long</span> z)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> t = x + <span class="number">4</span> * y + <span class="number">12</span> * z;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">x</span> in %rdi, <span class="keyword">y</span> in %rsi, z in %rdx</span><br><span class="line">scale:</span><br><span class="line">    lea<span class="string">q (%rdi, %rsi, 4)</span>, %rax</span><br><span class="line">    lea<span class="string">q (%rdx, %rdx, 2)</span>, %rdx</span><br><span class="line">    lea<span class="string">q (%rax, %rdx, 4)</span>, %rax</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+
+<h4 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h4><p>一元操作，只有一个操作数，既是源又是目的。这个操作数可以使一个寄存器，也可以是一个内存位置。</p>
+<p>二元操作，第二个数既是源又是目的。类似于x-=y. 不过源操作数是第一个，目的操作数是第二个，第一个操作数可以是立即数、寄存器或内存位置。第二个操作可以是寄存器或内存位置。注意当第二个操作数为内存地址时，处理器必须从内存读出值，执行操作，再把结果写回内存。</p>
+<h4 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h4><p>移位操作，先给出移位量，然后第二项是要移位的数。移位量可以是一个立即数，或者放在单字节寄存器%cl中（这些指令很特别，因为只允许以这个特定的寄存器作为操作数）。x86-64中，移位操作对w位长的数据值进行操作，移位量是由%c1寄存器的低m位决定的，这里2<sup>m</sup>=w。高位会被忽略。所以例如当寄存器%cl的值为0xFF时，指令salb会移7位，salw会移17位，sall会移31位，salq会移63位。</p>
+<p>移位操作的目的操作数可以是一个寄存器或一个内存位置。</p>
+<h4 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h4><p>两个64位有符号或无符号整数相乘得到的乘积需要128位来表示。下面描述的是支持产生两个64位数字的全128位乘积以及整数除法的指令</p>
+<table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">效果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">imulq S</td>
+<td align="left">R[%rdx]:R[%rax] ← S * R[%rax]</td>
+<td align="left">有符号全乘法</td>
+</tr>
+<tr>
+<td align="left">mulq S</td>
+<td align="left">R[%rdx]:R[%rax] ← S * R[%rax]</td>
+<td align="left">无符号全乘法</td>
+</tr>
+<tr>
+<td align="left">clto</td>
+<td align="left">R[%rdx]:R[%rax] ← 符号扩展（R[%rax]）</td>
+<td align="left">转换为8字</td>
+</tr>
+<tr>
+<td align="left">idivq S</td>
+<td align="left">R[%rdx] ← R[%rdx]： R[%rax] ÷ S</td>
+<td align="left">有符号除法</td>
+</tr>
+<tr>
+<td align="left">divq S</td>
+<td align="left">R[%rdx] ← R[%rdx]： R[%rax] ÷ S</td>
+<td align="left">无符号除法</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>一对寄存器%rdx和%rax组成一个128位的8字</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/computer-system-%E4%B8%80/" data-id="ckpkyp28r0011hd3a242fadsm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Computer-System/" rel="tag">Computer System</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/28/%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">零散知识点</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-System/">Computer System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-System/" rel="tag">Computer System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Effective-C/" rel="tag">Effective C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">开发环境搭建</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Computer-System/" style="font-size: 10px;">Computer System</a> <a href="/tags/Effective-C/" style="font-size: 20px;">Effective C++</a> <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 15px;">开发环境搭建</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/26/computer-system-%E4%B8%80/">computer system(一)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/28/%E9%9B%B6%E6%95%A3%E7%9F%A5%E8%AF%86%E7%82%B9/">零散知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/07/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95_all/">Effective-C-改善程序与设计的55个具体做法(All)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/05/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95%E4%BA%94-26-31/">Effective-C-改善程序与设计的55个具体做法(五)(26~31)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/17/Effective-C-%E6%94%B9%E5%96%84%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%9A%8455%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95-%E5%9B%9B-18-25/">Effective-C-改善程序与设计的55个具体做法(四)(18~25)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 可乐<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
